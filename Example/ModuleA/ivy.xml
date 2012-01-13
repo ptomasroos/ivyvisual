@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<ivy-module version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+  <info organisation="Organisation" module="ModuleA" revision="1.0" />
+  <publications>
+    <artifact name="ModuleA" type="dll" />
+  </publications>
+  <dependencies>
+    <dependency org="Organisation" name="ModuleB" rev="1.0+" />
+    <dependency org="Organisation" name="ModuleC" rev="1.0+" />
+  </dependencies>
+</ivy-module>

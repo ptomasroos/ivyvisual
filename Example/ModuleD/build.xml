@@ -1,0 +1,5 @@
+<project xmlns:ivy="antlib:org.apache.ivy.ant" xmlns:antcontrib="antlib:net.sf.antcontrib" basedir="." name="modules">
+	<target name="echo">
+		<echo>Test</echo>
+	</target>
+</project>

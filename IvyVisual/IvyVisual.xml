@@ -1,0 +1,199 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IvyVisual</name>
+    </assembly>
+    <members>
+        <member name="M:IvyVisual.Commands2ExtensionMethods.GetCommand(EnvDTE80.Commands2,System.String)">
+            <summary>
+            Gets the Command specified by shortName..
+            </summary>
+            <param name="shortName">Command short name</param>
+            <returns>Returns the Command on success or null when the Command does not exist.</returns>
+        </member>
+        <member name="M:IvyVisual.DTE2ExtensionMethods.HasProject(EnvDTE80.DTE2)">
+            <summary>
+            Gets whether a project file is active that exists on the file system.
+            </summary>
+        </member>
+        <member name="F:IvyVisual.OptionPages.General.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:IvyVisual.OptionPages.General.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:IvyVisual.OptionPages.General.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:IvyVisual.Commands.CommandBarBuilder">
+            <summary>
+            CommandBarBuilder is a helper to add controls to CommandBar's.
+            
+            It keeps a list of created Controls in order to remove them when the add-in is unloaded.
+            Adding Controls at startup and removing them when the add-in is unloaded is called the "temporary UI approach".
+            
+            Further information on this topic can be found at:
+              HOWTO: Adding buttons, commandbars and toolbars to Visual Studio .NET from an add-i
+                     http://www.mztools.com/articles/2005/MZ2005003.aspx
+            </summary>
+        </member>
+        <member name="T:IvyVisual.Commands.SolutionExplorerSelectedItemsBase">
+            <summary>
+            SolutionExplorerSelectedItemsBase represents the base class for all VsTortoise commands
+            that deal with selected items in the Solution Explorer.
+            </summary>
+        </member>
+        <member name="M:IvyVisual.Commands.CommandBase.#ctor(EnvDTE80.DTE2,System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="application">Reference to the DTE2 instance</param>
+            <param name="id">Identifier of the command. To keep it simple, you should use the class-name.</param>
+        </member>
+        <member name="M:IvyVisual.Commands.CommandBase.QueryStatus">
+            <summary>
+            Gets status of the command.
+            Whenever a command button is about to appear, Visual Studio queries its status.
+            </summary>
+        </member>
+        <member name="M:IvyVisual.Commands.CommandBase.Exec">
+            <summary>
+            Executes the command.
+            Only commands with vsCommandStatus.vsCommandStatusEnabled status flag are being executed.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:IvyVisual.Commands.CommandBase.SaveRequired">
+            <summary>
+            Specifies the command depends on all document have been saved.
+            </summary>
+        </member>
+        <member name="M:IvyVisual.Commands.SolutionExplorerSelectedItemsBase.#ctor(EnvDTE80.DTE2,System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:IvyVisual.Commands.SolutionExplorerSelectedItemsBase.IsSupported(EnvDTE.SelectedItem)">
+            <summary>
+            Gets whether the specified item is supported by this command.
+            </summary>
+        </member>
+        <member name="M:IvyVisual.Commands.SolutionExplorerSelectedItemsBase.QueryStatus">
+            <summary>
+            Derived classes should not override this method, they should implement
+            their query status logic in QueryContextSensitiveStatus() and QueryContextInsensitiveStatus() instead.
+            </summary>
+        </member>
+        <member name="M:IvyVisual.Commands.SolutionExplorerSelectedItemsBase.QueryContextSensitiveStatus">
+            <summary>
+            Gets the context sensitive command status. This is only performed when exactly
+            one physical file is selected. Derived classes override this method to implement
+            their logic. Usually this method performs various svn commands for the file in question,
+            so we don't want this to happen for multiple files for performance reasons.
+            </summary>
+        </member>
+        <member name="M:IvyVisual.Commands.SolutionExplorerSelectedItemsBase.QueryContextInsensitiveStatus">
+            <summary>
+            Gets the context insensitive command status. This is when more than one item has been selected.
+            </summary>
+        </member>
+        <member name="P:IvyVisual.Commands.SolutionExplorerSelectedItemsBase.SupportProject">
+            <summary>
+            Gets/sets if the command supports project items.
+            </summary>
+        </member>
+        <member name="P:IvyVisual.Commands.SolutionExplorerSelectedItemsBase.SupportSolution">
+            <summary>
+            Gets/sets if the command supports solution items.
+            </summary>
+        </member>
+        <member name="M:IvyVisual.Commands.CommandManager.#ctor(EnvDTE80.DTE2,EnvDTE.AddIn)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:IvyVisual.Commands.CommandManager.Add(IvyVisual.Commands.CommandBase)">
+            <summary>
+            Adds a command to the manager.
+            </summary>
+            <param name="command">Reference to the command to add</param>
+        </member>
+        <member name="M:IvyVisual.Commands.CommandManager.QueryStatus(System.String)">
+            <summary>
+            Gets status of the command with the specified full name.
+            Whenever a command button is about to appear, Visual Studio
+            queries its status.
+            </summary>
+        </member>
+        <member name="M:IvyVisual.Commands.CommandManager.Exec(System.String)">
+            <summary>
+            Executes the command with the specified full name.
+            </summary>
+        </member>
+        <member name="M:IvyVisual.Commands.CommandManager.IsPresent(System.String)">
+            <summary>
+            Checks whether the command with the specified full name exists.
+            </summary>
+        </member>
+        <member name="T:IvyVisual.Connect">
+            <summary>The object for implementing an Add-in.</summary>
+            <seealso class='IDTExtensibility2' />
+        </member>
+        <member name="M:IvyVisual.Connect.#ctor">
+            <summary>Implements the constructor for the Add-in object. Place your initialization code within this method.</summary>
+        </member>
+        <member name="M:IvyVisual.Connect.OnConnection(System.Object,Extensibility.ext_ConnectMode,System.Object,System.Array@)">
+            <summary>Implements the OnConnection method of the IDTExtensibility2 interface. Receives notification that the Add-in is being loaded.</summary>
+            <param term='application'>Root object of the host application.</param>
+            <param term='connectMode'>Describes how the Add-in is being loaded.</param>
+            <param term='addInInst'>Object representing this Add-in.</param>
+            <seealso class='IDTExtensibility2' />
+        </member>
+        <member name="M:IvyVisual.Connect.OnDisconnection(Extensibility.ext_DisconnectMode,System.Array@)">
+            <summary>Implements the OnDisconnection method of the IDTExtensibility2 interface. Receives notification that the Add-in is being unloaded.</summary>
+            <param term='disconnectMode'>Describes how the Add-in is being unloaded.</param>
+            <param term='custom'>Array of parameters that are host application specific.</param>
+            <seealso class='IDTExtensibility2' />
+        </member>
+        <member name="M:IvyVisual.Connect.OnAddInsUpdate(System.Array@)">
+            <summary>Implements the OnAddInsUpdate method of the IDTExtensibility2 interface. Receives notification when the collection of Add-ins has changed.</summary>
+            <param term='custom'>Array of parameters that are host application specific.</param>
+            <seealso class='IDTExtensibility2' />		
+        </member>
+        <member name="M:IvyVisual.Connect.OnStartupComplete(System.Array@)">
+            <summary>Implements the OnStartupComplete method of the IDTExtensibility2 interface. Receives notification that the host application has completed loading.</summary>
+            <param term='custom'>Array of parameters that are host application specific.</param>
+            <seealso class='IDTExtensibility2' />
+        </member>
+        <member name="M:IvyVisual.Connect.OnBeginShutdown(System.Array@)">
+            <summary>Implements the OnBeginShutdown method of the IDTExtensibility2 interface. Receives notification that the host application is being unloaded.</summary>
+            <param term='custom'>Array of parameters that are host application specific.</param>
+            <seealso class='IDTExtensibility2' />
+        </member>
+        <member name="T:IvyVisual.Commands.SolutionBase">
+            <summary>
+            Base class for VsTortoise commands that implement functionality
+            which relates to all items in a Visual Studio Solution.
+            </summary>
+        </member>
+        <member name="M:IvyVisual.Commands.SolutionBase.#ctor(EnvDTE80.DTE2,System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:IvyVisual.Commands.SolutionBase.QueryStatus">
+            <summary>
+            Gets whether the command is supported.
+            Solution commands are supported whenever a solution is open, no source control checks are done.
+            </summary>
+        </member>
+    </members>
+</doc>
